@@ -4,12 +4,14 @@ import Data.Char
 import System.Random
 
 --use random to get a card
+-- assign the id randomly, not a great idea, but will work for now until we migrate the objectMap to a monad
 drawCard :: Face -> Int -> Card
 drawCard upOrDown i = Card {
     color = toEnum (i `mod` 2)
   , face = upOrDown
   , suit  = toEnum (i `mod` 4)
-  , value = (i `mod` 13) + 1 }
+  , value = (i `mod` 13) + 1 
+  , cardId = i }
 
 drawHand :: StdGen -> Hand
 drawHand g = let
@@ -32,7 +34,8 @@ data Suit = Spades | Diamonds | Hearts | Clubs
 data Card = Card { color :: CardColor
                  , face :: Face
                  , suit :: Suit
-                 , value :: Int }
+                 , value :: Int 
+                 , cardId :: Int}
               deriving (Eq)
 
 instance Show Card where
