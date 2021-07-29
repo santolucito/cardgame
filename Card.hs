@@ -35,7 +35,7 @@ data Card = Card { color :: CardColor
                  , face :: Face
                  , suit :: Suit
                  , value :: Int 
-                 , cardId :: Int}
+                 }
               deriving (Eq)
 
 instance Show Card where
